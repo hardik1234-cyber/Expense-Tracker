@@ -32,6 +32,27 @@ A RESTful API for tracking personal expenses, managing user profiles, and genera
 
 ---
 
+## 🔐 Environment Variables
+
+The backend reads configuration from environment variables using Pydantic Settings. For local development, copy `xpense_tracker/.env.example` to `xpense_tracker/.env` and replace the placeholder values. The `.env` file is ignored by Git; do not commit it.
+
+In Render, add these variables to the **backend web service** under **Environment**:
+
+- `PROD_DB_URL`: the production PostgreSQL connection string.
+- `SECRET_KEY`: a newly generated, private key for signing JWTs.
+- `ALGORITHM`: `HS256`.
+- `ACCESS_TOKEN_EXPIRE_MINUTES`: `15` (or your chosen token lifetime).
+
+`LOCAL_DB_URL` is optional and is only needed if you use it in local development. Render injects configured environment variables into the running service, and the backend reads them automatically; no `.env` file needs to be uploaded or deployed.
+
+Generate a new secret key locally with:
+
+```bash
+python -c "import secrets; print(secrets.token_hex(32))"
+```
+
+---
+
 ## 📦 Installation (Poetry)
 
 1. **Clone the Repository**  

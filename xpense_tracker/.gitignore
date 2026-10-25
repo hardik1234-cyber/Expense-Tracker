@@ -127,6 +127,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# Local environment variables and secrets
+.env
+
 # Spyder project settings
 .spyderproject
 .spyproject
