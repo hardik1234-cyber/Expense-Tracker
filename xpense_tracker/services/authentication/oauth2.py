@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta, timezone
 from fastapi import Depends, HTTPException,status
 from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt
+import jwt
 from sqlmodel import Session, select
 from database.config import settings
 from database.database_connection import get_session
@@ -31,7 +31,7 @@ def verify_token_access(token: str, credentials_exception):
         if username is None:
             raise credentials_exception
         token_data = DataToken(username=username)
-    except JWTError:
+    except jwt.PyJWTError:
         raise credentials_exception
 
     return token_data

@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Literal
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -12,7 +13,7 @@ class Settings(BaseSettings):
     PROD_DB_URL: str
     LOCAL_DB_URL: str | None = None
     SECRET_KEY: str
-    ALGORITHM: str
+    ALGORITHM: Literal["HS256"] = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int
 
 

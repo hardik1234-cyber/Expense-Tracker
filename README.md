@@ -40,7 +40,7 @@ In Render, add these variables to the **backend web service** under **Environmen
 
 - `PROD_DB_URL`: the production PostgreSQL connection string.
 - `SECRET_KEY`: a newly generated, private key for signing JWTs.
-- `ALGORITHM`: `HS256`.
+- `ALGORITHM`: `HS256` (the only supported JWT algorithm).
 - `ACCESS_TOKEN_EXPIRE_MINUTES`: `15` (or your chosen token lifetime).
 
 `LOCAL_DB_URL` is optional and is only needed if you use it in local development. Render injects configured environment variables into the running service, and the backend reads them automatically; no `.env` file needs to be uploaded or deployed.
